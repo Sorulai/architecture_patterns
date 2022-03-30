@@ -9,5 +9,6 @@ class Index:
 
 class About:
     def __call__(self, request):
+        print(request.get('request_params').get('comment'))
         return '200 OK', render('contact.html',
                                 object_list={'date': request.get('date', None), "title": "Контакты"})
