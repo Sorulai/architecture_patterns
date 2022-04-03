@@ -14,5 +14,5 @@ fronts = [secret_front, other_front]
 
 routes = {
     '/': Index(),
-    '/about/': About(),
+    '/contact/': About(),
 }
