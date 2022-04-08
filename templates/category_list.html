@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}
+simplestyle_horizon
+{% endblock %}
+{% block body %}
+ <a href="/">назад</a>
+
+    <h1>Список категорий</h1>
+    <ul>
+
+        {% for item in objects_list %}
+        <li>
+            {{item.name}} <span>Количество товаров: {{item.product_count()}}</span>
+        </li>
+        {% endfor %}
+    </ul>
+
+	<div>
+		<li><a href="/products-list/">Список товаров</a></li>
+		<li><a href="/create-product/">Создать товар</a></li>
+	</div>
+{% endblock %}

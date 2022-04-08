@@ -1,24 +1,20 @@
 {% extends "base.html" %}
 {% block title %}
-	simplestyle_horizon
-{% endblock %}
-{% block style %}
-	{% include "inc_style.html" %}
+simplestyle_horizon
 {% endblock %}
 {% block body %}
 <div id="main">
     <div id="header">
         <div id="logo">
             <div id="logo_text">
-                <!-- class="logo_colour", allows you to change the colour of the text -->
                 <h1><a href="index.html">Funko pop<span class="logo_colour">figures</span></a></h1>
                 <h2>{{object_list.get('title')}}</h2>
             </div>
         </div>
         <div id="menubar">
-             {% block menu %}
-	{% include "inc_menu.html" %}
-{% endblock %}
+            {% block menu %}
+            {% include "inc_menu.html" %}
+            {% endblock %}
         </div>
 
     </div>
@@ -68,26 +64,22 @@
         </div>
         <div id="content">
             <h1>Добро пожаловать в магазин фигурок Funko pop</h1>
-            <p>This standards compliant, simple, fixed width website template is released as an 'open source' design
-                (under a <a href="http://creativecommons.org/licenses/by/3.0">Creative Commons Attribution 3.0
-                    Licence</a>), which means that you are free to download and use it for anything you want (including
-                modifying and amending it). All I ask is that you leave the 'design from HTML5webtemplates.co.uk' link
-                in the footer of the template, but other than that...</p>
-            <p>This template is written entirely in <strong>HTML5</strong> and <strong>CSS</strong>, and can be
-                validated using the links in the footer.</p>
-            <p>You can view more free HTML5 web templates <a href="http://www.html5webtemplates.co.uk">here</a>.</p>
-            <p>This template is a fully functional 5 page website, with an <a href="examples.html">examples</a> page
-                that gives examples of all the styles available with this design.</p>
-            <h2>Browser Compatibility</h2>
-            <p>This template has been tested in the following browsers:</p>
-            <ul>
-                <li>Internet Explorer 9</li>
-                <li>FireFox 25</li>
-                <li>Google Chrome 31</li>
-            </ul>
+            <div>
+                		<a href="/create-category/">Создать новую категорию</a>
+            </div>
+            <div>
+                <h1>Категории товаров</h1>
+                {% for item in object_list.get('categories') %}
+                <li>
+                    {{item.name}} <span>Количество товаров: {{item.product_count()}}</span>
+                    <a href="/products-list/?id={{item.id}}">Показать товары</a>
+                </li>
+                {% endfor %}
+            </div>
+
         </div>
     </div>
-   {% block footer %}
+    {% block footer %}
     {% include "inc_footer.html" %}
     {% endblock %}
 </div>
