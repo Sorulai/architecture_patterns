@@ -2,6 +2,7 @@
 {% block title %}
 simplestyle_horizon
 {% endblock %}
+{% block title_num %}{{object_list.get('title')}}{% endblock %}
 {% block body %}
  <div>
         <a href="/product-list/?id={{id}}">назад</a>

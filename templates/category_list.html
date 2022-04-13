@@ -1,22 +1,23 @@
-{% extends "base.html" %}
+{% extends "templates/base.html" %}
 {% block title %}
 simplestyle_horizon
 {% endblock %}
+{% block title_num %}{{object_list.get('title')}}{% endblock %}
 {% block body %}
- <a href="/">назад</a>
+<a href="/">назад</a>
 
-    <h1>Список категорий</h1>
-    <ul>
+<h1>Список категорий</h1>
+<ul>
 
-        {% for item in objects_list %}
-        <li>
-            {{item.name}} <span>Количество товаров: {{item.product_count()}}</span>
-        </li>
-        {% endfor %}
-    </ul>
+    {% for item in objects_list %}
+    <li>
+        {{item.name}} <span>Количество товаров: {{item.product_count()}}</span>
+    </li>
+    {% endfor %}
+</ul>
 
-	<div>
-		<li><a href="/products-list/">Список товаров</a></li>
-		<li><a href="/create-product/">Создать товар</a></li>
-	</div>
+<div>
+    <li><a href="/products-list/">Список товаров</a></li>
+    <li><a href="/create-product/">Создать товар</a></li>
+</div>
 {% endblock %}

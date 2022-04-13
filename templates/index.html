@@ -2,22 +2,8 @@
 {% block title %}
 simplestyle_horizon
 {% endblock %}
+{% block title_num %}{{object_list.get('title')}}{% endblock %}
 {% block body %}
-<div id="main">
-    <div id="header">
-        <div id="logo">
-            <div id="logo_text">
-                <h1><a href="index.html">Funko pop<span class="logo_colour">figures</span></a></h1>
-                <h2>{{object_list.get('title')}}</h2>
-            </div>
-        </div>
-        <div id="menubar">
-            {% block menu %}
-            {% include "inc_menu.html" %}
-            {% endblock %}
-        </div>
-
-    </div>
     <div id="content_header"></div>
     <div id="site_content">
         <div id="banner"></div>

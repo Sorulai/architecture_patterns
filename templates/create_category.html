@@ -2,9 +2,10 @@
 {% block title %}
 simplestyle_horizon
 {% endblock %}
+{% block title_num %}{{object_list.get('title')}}{% endblock %}
 {% block body %}
-<h1>Создание категории</h1>
-<form method="post">
+<h1 style="display: flex; justify-content: center">Создание категории</h1>
+<form method="post" style="display: flex; justify-content: center">
     <input type="text" name="name" placeholder="Название">
     <button type="submit">Сохранить и вернуться на главную</button>
 </form>

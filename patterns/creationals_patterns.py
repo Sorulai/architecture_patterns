@@ -55,8 +55,6 @@ class ProductFactory:
 
     @classmethod
     def create(cls, type_, name, category):
-        print(type_)
-        print(cls.types)
         return cls.types[type_](name, category)
 
 
