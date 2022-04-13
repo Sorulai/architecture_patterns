@@ -8,6 +8,22 @@
      {% include "inc_style.html" %}
 </head>
 <body>
+<div id="main">
+    <div id="header">
+        <div id="logo">
+            <div id="logo_text">
+                <h1><a href="index.html">Funko pop<span class="logo_colour">figures</span></a></h1>
+                <h2>{% block title_num %} {% endblock %} </h2>
+            </div>
+        </div>
+        <div id="menubar">
+            {% block menu %}
+            {% include "inc_menu.html" %}
+            {% endblock %}
+        </div>
+
+    </div>
     {% block body %}    {% endblock %}
+</div>
 </body>
 </html>
