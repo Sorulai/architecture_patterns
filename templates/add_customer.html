@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}
+simplestyle_horizon
+{% endblock %}
+{% block body %}
+<div>
+		<li>
+			<a href="/customer-list/">Список покупателей</a>
+		</li>
+		<li>
+			<a href="/create-customer/">Создать покупателя</a>
+		</li>
+	</div>
+    <h1>Добавление покупателю товар</h1>
+    <form method="post">
+        <select size="3" name="course_name">
+            {% for item in products %}
+            <option value="{{item.name}}">{{item.name}}</option>
+            {% endfor %}
+        </select>
+        <select size="3" name="student_name">
+            {% for item in customers %}
+            <option value="{{item.name}}">{{item.name}}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Записать</button>
+    </form>
+{% endblock %}
