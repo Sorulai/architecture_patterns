@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}
+simplestyle_horizon
+{% endblock %}
+{% block body %}
+<div>
+		<li>
+			<a href="/customer-list/">Список покупателей</a>
+		</li>
+	</div>
+    <div>
+        <h1>Создание Покупателя</h1>
+        <form method="post">
+            <input type="text" name="name" placeholder="Имя">
+            <button type="submit">Сохранить</button>
+        </form>
+    </div>
+{% endblock %}
