@@ -1,5 +1,4 @@
 from jsonpickle import dumps, loads
-
 from framework.templator import render
 
 

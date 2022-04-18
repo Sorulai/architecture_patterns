@@ -1,15 +1,18 @@
 from datetime import date
 
 from patterns.behavioral_patterns import EmailNotifier, SmsNotifier, ListView, CreateView, BaseSerializer
-from patterns.creationals_patterns import Engine, Logger
+from patterns.creationals_patterns import Engine, Logger, MapperRegistry
 from framework.templator import render
 from patterns.structural_patterns import AppRoute, Debug
+from patterns.system_patterns import UnitOfWork
 
 site = Engine()
 logger = Logger('main')
 routes = {}
 email_notifier = EmailNotifier()
 sms_notifier = SmsNotifier()
+UnitOfWork.new_current()
+UnitOfWork.get_current().set_mapper_registry(MapperRegistry)
 
 
 @AppRoute(routes=routes, url='/')
@@ -138,8 +141,11 @@ class CopyProduct:
 
 @AppRoute(routes=routes, url='/customer-list/')
 class StudentListView(ListView):
-    queryset = site.customers
     template_name = 'customer_list.html'
+
+    def get_queryset(self):
+        mapper = MapperRegistry.get_current_mapper('customer')
+        return mapper.all()
 
 
 @AppRoute(routes=routes, url='/create-customer/')
@@ -151,6 +157,8 @@ class StudentCreateView(CreateView):
         name = site.decode_value(name)
         new_obj = site.create_user('customer', name)
         site.customers.append(new_obj)
+        new_obj.mark_new()
+        UnitOfWork.get_current().commit()
 
 
 @AppRoute(routes=routes, url='/add-customer/')
